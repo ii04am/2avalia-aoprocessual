@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+    Nome:Alisson Henrique da Silva n°1
+    Nome:Julia Gabrielle Silva da Costa n° 16    Turma: 3°B
+    Nome:Maria Eduarda Tanoue Barrionuevo n° 21
+    Nome:Vanessa Ferreira Dos Santos n°28             -->
+
+<html>
+<head>
+    <title>Números Primos</title>
+    <meta charset="UTF-8">   
+<body>
+    <h1>Verifique quantos numeros primos há de acordo com o numero digitado</h1>
+    <input type="text" id="qtdNumeros" placeholder="Digite a quantidade de números primos">
+    <button onclick="exibirPrimos()">Exibir</button>
+    <br>
+    <canvas id="meuCanvas" width="400" height="400" style="border:1px solid #000000; background-color: white;"></canvas>
+
+    <script>
+        function recebeNumero(){
+                if (canvas.getContext){
+                    var maxWidth = 300;
+                    var lineHeight = 35;
+                    var x = (canvas.width - maxWidth) / 2;
+                    var y = 60;
+                    eprimo(cntxt, N1, x, y);
+                }
+            }
+        function eprimo(N1) {
+            for (let i = 2, sqrt = Math.sqrt(N1); i <= sqrt; i++) {
+                if (N1 % i === 0) return false;
+            }
+            return N1 > 1;
+            
+        }
+
+        function exibirPrimos() {
+            const qtd = parseInt(document.getElementById('qtdNumeros').value);
+            const canvas = document.getElementById('meuCanvas');
+            const cntxt = canvas.getContext('2d');
+            cntxt.clearRect(0, 0, canvas.width, canvas.height);
+            let x = 10;
+            let y =-10;
+            cntxt.font="20px Comic Sans MS";
+            for (let i = 2, contador = 0; contador < qtd; i++) {
+                 if (eprimo(i)) {
+                    cntxt.fillStyle = 'red';
+                    cntxt.fillText(i, x, 100);
+                    x += 30;
+                    contador++;
+                }
+            }
+            
+            line = line + c.toString() + ", ";                               
+                cntxt.fillText(line, x, y);
+                cntxt.strokeText(line, x, y);
+                document.getElementById("qtdNumeros").value = "";
+                document.getElementById("qtdNumeros").focus();
+        }
+        
+    </script>
+    </head>
+</body>
+</html>
